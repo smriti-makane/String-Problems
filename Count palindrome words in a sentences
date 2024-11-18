@@ -1,0 +1,32 @@
+public class Main {
+    public static boolean isPalindrome(String word) {
+        int i = 0;
+        int j = word.length() - 1;
+
+        while (i <= j) {
+            if (word.charAt(i) != word.charAt(j)) {
+                return false; 
+            }
+            i++;
+            j--;
+        }
+        return true; // Return true if the word is a palindrome
+    }
+
+    public static void main(String[] args) {
+        String sentence = "Madam Anna went to kayak racecar civic level noon radar"; 
+
+        String[] words = sentence.split("\\s+");
+        int count = 0;
+
+        for (String word : words) {
+            word = word.toLowerCase().replaceAll("[^a-z0-9]", ""); 
+            if (!word.isEmpty() && isPalindrome(word)) {
+                count++;
+            }
+        }
+
+        System.out.println("The sentence is: \"" + sentence + "\"");
+        System.out.println("Number of palindrome words: " + count);
+    }
+}
