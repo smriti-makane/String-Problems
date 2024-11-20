@@ -1,0 +1,38 @@
+public class Main {
+    private static boolean isPalindrome(String s, int left, int right) {
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    public static boolean validPalindrome(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                return isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1);
+            }
+            left++;
+            right--;
+        }
+
+        return true; 
+    }
+
+    public static void main(String[] args) {
+        String s1 = "abca"; 
+        System.out.println("Is \"" + s1 + "\" a valid palindrome II? " + validPalindrome(s1)); // Output: true
+
+        String s2 = "racecar";
+        System.out.println("Is \"" + s2 + "\" a valid palindrome II? " + validPalindrome(s2)); // Output: true
+
+        String s3 = "hello";
+        System.out.println("Is \"" + s3 + "\" a valid palindrome II? " + validPalindrome(s3)); // Output: false
+    }
+}
