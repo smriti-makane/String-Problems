@@ -1,0 +1,21 @@
+public class Main {    public static void main(String[] args) {
+        String str = "hello world";
+        int vowels = 0, consonants = 0;
+
+        // Convert to lowercase and clean up non-alphabetic characters
+        str = str.toLowerCase().replaceAll("[^a-z]", "");
+
+        // Loop through each character in the string
+        for (char c : str.toCharArray()) {
+            if ("aeiou".indexOf(c) != -1) {
+                vowels++; // Increment vowels count
+            } else {
+                consonants++; // Increment consonants count
+            }
+        }
+
+        System.out.println("Input String: " + str);
+        System.out.println("Number of Vowels: " + vowels);
+        System.out.println("Number of Consonants: " + consonants);
+    }
+}
