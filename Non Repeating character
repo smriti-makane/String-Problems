@@ -1,0 +1,30 @@
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class FirstNonRepeatingCharacter {
+    public static void main(String[] args) {
+        // Input string
+        String input = "swiss";
+
+        // Call the method to find the first non-repeating character
+        char result = findFirstNonRepeatingChar(input);
+
+        // Print the result
+        if (result != '\0') {
+            System.out.println("The first non-repeating character is: " + result);
+        } else {
+            System.out.println("No non-repeating character found.");
+        }
+    }
+
+    public static char findFirstNonRepeatingChar(String str) {
+        // Use a LinkedHashMap to maintain the order of characters
+        Map<Character, Integer> charCountMap = new LinkedHashMap<>();
+
+        // Count occurrences of each character
+        for (char ch : str.toCharArray()) {
+            charCountMap.put(ch, charCountMap.getOrDefault(ch, 0) + 1);
+        }
+
+        // Find the first character with a count of 1
+        for (Map.Entry<Character, Integer> entry : charCountMap.entry
