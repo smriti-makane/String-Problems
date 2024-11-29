@@ -1,0 +1,42 @@
+public class LongestPrefixSuffix {
+    public static int[] computeLPSArray(String str) {
+        int n = str.length();
+        int[] lps = new int[n];
+        int length = 0; // Length of the previous longest prefix suffix
+        int i = 1;
+
+        // Initialize the first element of LPS to 0
+        lps[0] = 0;
+
+        // Loop through the string
+        while (i < n) {
+            if (str.charAt(i) == str.charAt(length)) {
+                length++;
+                lps[i] = length;
+                i++;
+            } else {
+                if (length != 0) {
+                    length = lps[length - 1];
+                } else {
+                    lps[i] = 0;
+                    i++;
+                }
+            }
+        }
+        return lps;
+    }
+
+    public static void main(String[] args) {
+        String str = "abacab";
+        int[] lps = computeLPSArray(str);
+
+        System.out.println("LPS Array:");
+        for (int value : lps) {
+            System.out.print(value + " ");
+        }
+
+        // The longest prefix suffix length
+        int longestPrefixSuffix = lps[str.length() - 1];
+        System.out.println("\nLongest Prefix Suffix Length: " + longestPrefixSuffix);
+    }
+}
