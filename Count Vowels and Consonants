@@ -5,7 +5,7 @@ public class Main {    public static void main(String[] args) {
         // Convert to lowercase and clean up non-alphabetic characters
         str = str.toLowerCase().replaceAll("[^a-z]", "");
 
-        // Loop through each character in the string
+        // Loop through each character in the string 
         for (char c : str.toCharArray()) {
             if ("aeiou".indexOf(c) != -1) {
                 vowels++; // Increment vowels count
